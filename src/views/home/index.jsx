@@ -10,6 +10,7 @@ import "chart.js/auto";
 import { useState } from "react";
 
 const Home = () => {
+  // eslint-disable-next-line
   const [data, setData] = useState({
     labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     datasets: [

@@ -1,4 +1,4 @@
-import { Form, Button, FloatingLabel, Spinner } from "react-bootstrap";
+import { Form, Button, FloatingLabel, Spinner, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -31,24 +31,25 @@ const Login = () => {
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
     // email errors
-    if (!email || email === "") newErrors.email = "required";
+    if (!email || email === "") newErrors.email = "required!";
     else if (regexEmail.test(email) === false)
       newErrors.email = "email is not valid!";
     // password errors
-    if (!password || password === "") newErrors.password = "required";
+    if (!password || password === "") newErrors.password = "required!";
+    else if (password.length < 8) newErrors.password = "password is too short!";
 
     return newErrors;
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    setLoading(true);
     const newErrors = findFormErrors();
     // Conditional logic:
     if (Object.keys(newErrors).length > 0) {
       // We got errors!
       setErrors(newErrors);
     } else {
+      setLoading(true);
       const body = {
         email: email,
         password: password,
@@ -94,6 +95,9 @@ const Login = () => {
             required
             isInvalid={!!errors.email}
           />
+          <Form.Control.Feedback type="invalid">
+            {errors.email}
+          </Form.Control.Feedback>
         </FloatingLabel>
         <FloatingLabel controlId="floatingPassword" label="Password">
           <Form.Control
@@ -103,6 +107,9 @@ const Login = () => {
             required
             isInvalid={!!errors.password}
           />
+          <Form.Control.Feedback type="invalid">
+            {errors.password}
+          </Form.Control.Feedback>
         </FloatingLabel>
         <Button
           className="mt-3 btn-login"
@@ -114,6 +121,12 @@ const Login = () => {
           {loading ? <Spinner animation="border" /> : "Login"}
         </Button>
       </Form>
+      <div className="mb-5">
+        <Alert key={1} variant="warning">
+          Because the login API cannot be access without token so here the
+          alternative link to home <a href="/home">Home</a>
+        </Alert>
+      </div>
     </div>
   );
 };

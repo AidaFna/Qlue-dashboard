@@ -14,8 +14,7 @@ const navbar = () => {
                 title="Admin"
                 align="end"
               >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Profile</NavDropdown.Item>
+                <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/">Log Out</NavDropdown.Item>
               </NavDropdown>

@@ -17,8 +17,8 @@ const navigation = () => {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
-            <Nav.Link eventKey="/1" style={{ color: "black" }}>
-              Maps
+            <Nav.Link href="/profile" style={{ color: "black" }}>
+              Profile
             </Nav.Link>
           </Nav.Item>
         </Nav>

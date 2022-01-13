@@ -4,11 +4,11 @@ import Navigation from "../components/navigation";
 import Tables from "./table";
 import "./data.css";
 
-const Data = () => {
+const Details = () => {
   return (
     <div className="home">
       <Navbar />
-      <Container className="mt-5 mb-5">
+      <Container>
         <Navigation />
         <h1 className="mt-5">Data</h1>
         <Row className="mt-5">

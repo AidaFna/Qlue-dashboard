@@ -3,6 +3,7 @@ import './App.css';
 import Home from './views/home'
 import Landing from './views/landing/landing';
 import Data from './views/data';
+import Profile from './views/Profile/profile';
 
 const App = () => {
   return  <Router>
@@ -10,6 +11,7 @@ const App = () => {
               <Route path="/" element={<Landing/>}/>
               <Route path="/home" element={<Home/>}/>
               <Route path="/data" element={<Data/>}/>
+              <Route path="/profile" element={<Profile/>}/>
             </Routes>
           </Router>
 }

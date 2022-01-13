@@ -1,37 +1,46 @@
+import { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import "./data.css";
+import { useDispatch, useSelector } from "react-redux";
+import allStore from "../../store/actions";
 
 const Tables = () => {
+  const dispatch = useDispatch();
+  const data = useSelector(({ data1 }) => data1);
+
+  useEffect(() => {
+    dispatch(allStore.fetchData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <>
       <Table responsive>
         <thead>
           <tr>
-            <th>#</th>
-            {Array.from({ length: 6 }).map((_, index) => (
-              <th key={index}>Table heading</th>
-            ))}
+            <th>No</th>
+
+            <th>Movie Name</th>
+            <th>Languange</th>
+            <th>Realese Date</th>
+            <th>Vote</th>
+            <th>Total Vote</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            {Array.from({ length: 6 }).map((_, index) => (
-              <td key={index}>Table cell {index}</td>
-            ))}
-          </tr>
-          <tr>
-            <td>2</td>
-            {Array.from({ length: 6 }).map((_, index) => (
-              <td key={index}>Table cell {index}</td>
-            ))}
-          </tr>
-          <tr>
-            <td>3</td>
-            {Array.from({ length: 6 }).map((_, index) => (
-              <td key={index}>Table cell {index}</td>
-            ))}
-          </tr>
+          {data.map((el, index) => (
+            <tr>
+              <td key={index}>{index + 1}</td>
+              <td key={index}> {el.original_title}</td>
+              <td key={index}> {el.original_language}</td>
+              <td key={index}> {el.release_date}</td>
+              <td key={index}>{el.vote_average}</td>
+              <td key={index}>{el.vote_count}</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </>

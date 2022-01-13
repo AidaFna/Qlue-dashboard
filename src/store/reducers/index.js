@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import login from './postLogin.js'
+import data1 from './postData.js'
 
 const rootReducer = combineReducers ({
-    login,
+    data1,
 })
 
 export default rootReducer

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
@@ -24,9 +25,9 @@ function Maps() {
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyAQqI0lz9tX8YSBkZ1SvRWlAwkSbqepFCY",
   });
-  
+
   // eslint-disable-next-line
-  const [map, setMap] = React.useState(null);
+  const [map, setMap] = useState(null);
 
   // const onLoad = React.useCallback(function callback(map) {
   //   const bounds = new window.google.maps.LatLngBounds();
@@ -36,6 +37,7 @@ function Maps() {
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
+    console.log(map);
   }, []);
 
   return isLoaded ? (
